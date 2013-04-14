@@ -53,8 +53,8 @@ class Machine {
         return $this->_state;
     }
 
-    protected function transaction($state, $event) {
-        if ($state instanceof State) {
+    protected function transaction(State $state, $event) {
+        //if ($state instanceof State) {
             $reflectionClass = new ReflectionClass($state);
             if ($reflectionClass->getMethod($event)) {
                 $reflectionMethod = new ReflectionMethod($state, $event);
@@ -62,9 +62,9 @@ class Machine {
             } else {
                 throw new Exception('Nonexistent event!');
             }
-        } else {
-            throw new Exception('Nonexistent state!');
-        }
+        //} else {
+        //    throw new Exception('Nonexistent state!');
+        //}
     }
 
     public function onEvent() {
